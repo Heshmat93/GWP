@@ -40,7 +40,7 @@
             }
             else
             {
-                return BadRequest(result.Errors);
+                return BadRequestResult(result.Errors);
             }
         }
         protected IActionResult OkResult(dynamic data, int? totalCount = null)

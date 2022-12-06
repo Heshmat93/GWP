@@ -1,3 +1,4 @@
+using GWP.API.Infrastructure.MiddleWares;
 using Infrastructure;
 using Microsoft.AspNetCore.Hosting;
 
@@ -14,6 +15,8 @@ startup.ConfigureServices(builder.Services);
 builder.Services.AddPersistence(builder.Configuration);
 var app = builder.Build();
 // Configure the HTTP request pipeline.
+app.UseMiddleware(typeof(ErrorHandlingMiddleware));
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

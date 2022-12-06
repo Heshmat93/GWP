@@ -8,8 +8,8 @@
     public interface IDummySerivce
     {
         Task<Result> GetDummiesAsync();
-        Task<Dummy> GetAppSettingByIdAsync(int id);
-        Task<Dummy> UpdateAsync(Dummy appSetting);
+        Task<Result> GetDummyAsync(int id);
+        Task<Result> UpdateAsync(UpdateDummyDto updateDummyDto);
         Task<bool> DeleteAsync(int id);
         Task<Result> AddAsync(AddDummyDto addDummy);
     }

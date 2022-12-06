@@ -27,9 +27,11 @@
             throw new NotImplementedException();
         }
 
-        public Task<Dummy> GetAppSettingByIdAsync(int id)
+        public async Task<Result> GetDummyAsync(int id)
         {
-            throw new NotImplementedException();
+            var dummy = await _dummyRepository.GetByIdAsync(id);
+            return Result.Success(_mapper.Map<GetDummyDetailsDto>(dummy));
+
         }
 
         public async Task<Result> GetDummiesAsync()
@@ -39,14 +41,23 @@
             return Result.Success(dummyListDto);
         }
 
-        public Task<Dummy> UpdateAsync(Dummy appSetting)
+        public async Task<Result> UpdateAsync(UpdateDummyDto updateDummyDto)
         {
-            throw new NotImplementedException();
+            var existed = await _dummyRepository.GetByIdAsync(updateDummyDto.Id);
+            if (existed is null)
+            {
+                return Result.Failure(new string[] { "TheItemNotExisted" });
+            }
+            var dummy = _mapper.Map<Dummy>(updateDummyDto);
+
+            await _dummyRepository.Update(dummy);
+            await _unitOfWork.CommitAsync();
+            return Result.Success(dummy.Id);
         }
         public async Task<Result> AddAsync(AddDummyDto addDummy)
         {
             var dummy = _mapper.Map<Dummy>(addDummy);
-          await  _dummyRepository.Add(dummy);
+            await _dummyRepository.Add(dummy);
             await _unitOfWork.CommitAsync();
             return Result.Success(dummy.Id);
         }
