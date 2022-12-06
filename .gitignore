@@ -17,3 +17,5 @@ obj
 /Domain/bin
 /Infrastructure/bin
 /Infrastructure/obj
+/.git
+/.vs
