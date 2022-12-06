@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "/OjJnQIFLMOMsHJ2kjkne7Lh+7D4ex23RujQnD+LCQoMGYc/ePj1DGyqz/wpsgjunzwjIMSUNYo5jfUrLOhR8Q==",
+  "dgSpecHash": "PamQj2HfbgM1gMi76Hn6y+esC1qS99kM+HwYkQ9nKM/siSvexITspR1/EQ9f7ZUeJ61XtBMQ8hqCd5TjH5rZow==",
   "success": true,
   "projectFilePath": "D:\\2p\\GWP\\GWPRepo\\GWP\\GWP.API\\GWP.API.csproj",
   "expectedPackageFiles": [
@@ -63,6 +63,7 @@
     "C:\\Users\\aheshmat\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\aheshmat\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\aheshmat\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "C:\\Users\\aheshmat\\.nuget\\packages\\newtonsoft.json\\13.0.2\\newtonsoft.json.13.0.2.nupkg.sha512",
     "C:\\Users\\aheshmat\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
     "C:\\Users\\aheshmat\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
     "C:\\Users\\aheshmat\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",

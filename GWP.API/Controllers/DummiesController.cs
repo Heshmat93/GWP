@@ -25,10 +25,20 @@
         {
             return Result(await _dummySerivce.GetDummiesAsync());
         }
+        [HttpGet("id")]
+        public async Task<IActionResult> GetDummyAsync(int id)
+        {
+            return Result(await _dummySerivce.GetDummyAsync(id));
+        }
         [HttpPost]
         public async Task<IActionResult> AddAsync(AddDummyDto addDummy)
         {
             return Result(await _dummySerivce.AddAsync(addDummy));
+        }
+        [HttpPut]
+        public async Task<IActionResult> UpdateAsync(UpdateDummyDto updateDummy)
+        {
+            return Result(await _dummySerivce.UpdateAsync(updateDummy));
         }
     }
 }

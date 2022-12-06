@@ -10,6 +10,8 @@ namespace CleanArchitecture.Application.Common.Mappings
         {
             CreateMap<Dummy, GetDummyListDto>();
             CreateMap<AddDummyDto, Dummy>();
+            CreateMap<UpdateDummyDto, Dummy>();
+            CreateMap<GetDummyDetailsDto, Dummy>();
 
         }
 
