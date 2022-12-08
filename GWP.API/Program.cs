@@ -1,9 +1,10 @@
 using GWP.API.Infrastructure.MiddleWares;
 using Infrastructure;
-using Microsoft.AspNetCore.Hosting;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Host.UseSerilog((ctx, cfg) => cfg.ReadFrom.Configuration(ctx.Configuration));
 // Add services to the container.
 
 builder.Services.AddControllers();

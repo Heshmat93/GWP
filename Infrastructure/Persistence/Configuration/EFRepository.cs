@@ -1,6 +1,8 @@
 ﻿namespace Infrastructure.Persistence.Configuration
 {
     using Application.Common.Interfaces;
+    using Application.Models;
+    using CleanArchitecture.Application.Common.Models;
     using Microsoft.EntityFrameworkCore;
     using System;
     using System.Collections.Generic;
@@ -71,7 +73,28 @@
             }
             return await query.AsNoTracking().ToListAsync();
         }
+        public async Task<PaginatedList<TEntity>> GetPaginatedByAsync(PaginationInputModel<TEntity> pagination,Expression<Func<TEntity, bool>> filter = null, string[] children = null)
+        {
+            IQueryable<TEntity> query = _dbSet;
+            var pageNumber =pagination.PageNumber;
+            var pageSize =pagination.PageSize;
+            if (filter != null)
+            {
+                query = query.Where(filter);
+            }
 
+            if (children != null)
+            {
+                foreach (string entity in children)
+                {
+                    query = query.Include(entity);
+                }
+            }
+            var items= await query.AsNoTracking().Skip((pageNumber-1)*pageSize).Take(pageSize).ToListAsync();
+            var count = await query.CountAsync();
+            return new PaginatedList<TEntity>(items, count, pageNumber, pageSize);
+
+        }
         public async Task<TEntity> Add(TEntity entity)
         {
             var entry = _context.Entry(entity);

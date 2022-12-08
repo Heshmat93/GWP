@@ -1,5 +1,7 @@
 ﻿namespace Application.Common.Interfaces
 {
+    using Application.Models;
+    using CleanArchitecture.Application.Common.Models;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -21,5 +23,6 @@
         List<TEntity> GetAll();
         Task<IList<TEntity>> GetBy(Expression<Func<TEntity, bool>> filter = null, string[] children = null);
         Task<TEntity> Delete(TEntity entity);
+        Task<PaginatedList<TEntity>> GetPaginatedByAsync(PaginationInputModel<TEntity> pagination, Expression<Func<TEntity, bool>> filter = null, string[] children = null);
     }
 }

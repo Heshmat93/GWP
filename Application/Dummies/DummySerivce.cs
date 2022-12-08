@@ -2,13 +2,10 @@
 {
     using Application.Common.Interfaces;
     using Application.Dummies.DTO;
+    using Application.Models;
     using AutoMapper;
     using CleanArchitecture.Application.Common.Models;
     using Domain.Dummy;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
 
     public class DummySerivce : IDummySerivce
     {
@@ -36,9 +33,11 @@
 
         public async Task<Result> GetDummiesAsync()
         {
-            var dummies = (await _dummyRepository.GetAllAsync()).ToList();
-            var dummyListDto = _mapper.Map<List<GetDummyListDto>>(dummies);
-            return Result.Success(dummyListDto);
+            var x = new PaginationInputModel<Dummy>();
+            var dummies = (await _dummyRepository.GetPaginatedByAsync(x));
+            var dummyListDto = _mapper.Map<List<GetDummyListDto>>(dummies.Items);
+            var y = new PaginatedList<GetDummyListDto>(dummyListDto, dummies.TotalCount, dummies.PageNumber, x.PageSize);
+            return Result.Success(y);
         }
 
         public async Task<Result> UpdateAsync(UpdateDummyDto updateDummyDto)

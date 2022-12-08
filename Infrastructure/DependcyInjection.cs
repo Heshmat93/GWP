@@ -2,9 +2,11 @@
 {
     using Application.Common.Interfaces;
     using Application.Dummies;
+    using Application.Models;
     using Application.Users;
     using AutoMapper;
     using CleanArchitecture.Application.Common.Mappings;
+    using CleanArchitecture.Application.Common.Models;
     using GWPPlatform.Domain.Identity;
     using Infrastructure.Persistence;
     using Infrastructure.Persistence.Configuration;
@@ -26,10 +28,12 @@
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped(typeof(IRepository<>), typeof(EFRepository<>));
             services.AddIdentity<User, Role>().AddEntityFrameworkStores<ApplicationDBContext>()
-    .AddDefaultTokenProviders();
+                    .AddDefaultTokenProviders();
 
             var config = new MapperConfiguration(cfg =>
             {
+                //cfg.CreateMap(typeof(PaginatedList<>), typeof(PaginatedList<>)).ConvertUsing(typeof(Converter<,>));
+
                 cfg.AddProfile(new MappingProfile());
             });
             var mapper = config.CreateMapper();

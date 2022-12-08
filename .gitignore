@@ -28,9 +28,11 @@ obj
 /Domain/Debug/bin/net6.0
 /Domain/Debug/obj/net6.0
 /Infrastructure/bin
+/Infrastructure/bin/Debug/net6.0
 /Infrastructure/obj
 /Infrastructure/obj/Debug/net6.0
 /Infrastructure/Debug/bin/net6.0
 /Infrastructure/Debug/obj/net6.0
 /.git
 /.vs
+/.vs/GWP/v17
